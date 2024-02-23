@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   senha = ''
   email = ''
   keyword = ''
-  dataPostagem = 0
+  dataPostagem = 1
   countPost = 30
   form = ''
   jsonObject: any;
@@ -26,6 +26,9 @@ export class MainComponent implements OnInit {
   sort = '0'
   variavel = ''
   ngOnInit(): void { }
+
+  //usado para mostrar o spinner quando estiver aguardando a resposta do back
+  loading = false
 
   // Validação do formulário
   getValues(form: NgForm) {
@@ -85,19 +88,22 @@ export class MainComponent implements OnInit {
       "sort": this.sort,
       "countPost": this.countPost
     }
-    {
+
+      this.loading = true
       this.mainService.sendToBackend(this.jsonObject).pipe(
         catchError((error) => {
+          this.loading = false
           console.error('Erro ao enviar dados para o backend:', error);
           return throwError(error); // Re-emitir o erro para que o componente que chamou possa lidar com ele
         })
       ).subscribe((response) => {
+        this.loading = false
         const responseArray = Object.values(response);
         this.exportJsonToXlsx(responseArray);
         // this.downloadJson(responseArray, 'tiktok_data');
       });
     }
-  }
+  
   
 }
 

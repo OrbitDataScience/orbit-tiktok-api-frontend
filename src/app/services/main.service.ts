@@ -9,7 +9,8 @@ export class MainService {
  
   constructor(private httpClient : HttpClient) {}
 
-  private url = 'http://192.168.0.101:5000/api/gettiktokdata';
+  //private url = 'http://127.0.0.1:5000/api/gettiktokdata';
+  private url = "https://tiktok-backend-xgmsewclfa-uc.a.run.app/api/gettiktokdata"
 
    public sendToBackend(jsonData: any): Observable<any> {
    const httpOptions = {

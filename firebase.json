@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/orbit-web-template",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
