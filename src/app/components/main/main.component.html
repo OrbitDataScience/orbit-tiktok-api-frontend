@@ -1,0 +1,107 @@
+<div class="container">
+  <br />
+  <h2 class="text-center">
+    API TikTok
+  </h2>
+  <br />
+  <form class="border rounded p-4 mb-4 w-50 align-self-center mx-auto shadow p-3 mb-5 bg-white rounded" (ngSubmit)="sendToBackend()" #form="ngForm">
+    <div class="form-group">
+      <label for="KeyWord">Palavra chave: *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="KeyWord"
+        name="KeyWord"
+        placeholder="Digite a palavra chave"
+        title="Digite a palavra chave para buscar as postagens. Ex: 'gatos' ou 'cachorros'"
+        required="true"
+        [(ngModel)]="keyword"
+      />
+    </div>
+    
+    <div class="form-group mt-4">
+      <label for="exampleFormControlSelect">Selecione a data das postagens</label>
+      <select
+        class="form-control custom-select"
+        id="exampleFormControlSelect"
+        name="exampleFormControlSelect"
+        default="0"
+        [(ngModel)]="dataPostagem"
+      >
+        <option value="0">Tudo</option>
+        <option value="1">Últimas 24 Horas</option>
+        <option value="7">Essa semana</option>
+        <option value="30">Esse mês</option>
+        <option value="90">Últimos 3 meses</option>
+        <option value="180">Últimos 6 meses</option>
+      </select>
+    </div>
+    
+    <div class="form-group mt-4">
+      <label for="KeyWord">Região</label>
+      <select class="form-control" id="region" name="region" [(ngModel)]="region">
+        <option value="BR">Brasil</option>
+        <option value="US">Estados Unidos</option>
+        <option value="AR">Argentina</option>
+        <option value="CA">Canadá</option>
+        <option value="CN">China</option>
+        <option value="DE">Alemanha</option>
+        <option value="FR">França</option>
+        <option value="IN">Índia</option>
+        <option value="IT">Itália</option>
+        <option value="JP">Japão</option>
+        <option value="MX">México</option>
+        <option value="RU">Rússia</option>
+        <option value="SA">Arábia Saudita</option>
+        <option value="KR">Coreia do Sul</option>
+        <option value="ES">Espanha</option>
+        <option value="TR">Turquia</option>
+        <option value="GB">Reino Unido</option>
+        <option value="AU">Austrália</option>
+        <option value="ID">Indonésia</option>
+        <option value="ZA">África do Sul</option>
+        <option value="NG">Nigéria</option>
+        <option value="EG">Egito</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-4">
+      <label for="KeyWord">Classificação</label>
+      <select
+        class="form-control"
+        id="sort"
+        name="sort"
+        default="0"
+        [(ngModel)]="sort"
+      >
+        <option value="0">Relevância</option>
+        <option value="1">Quantidade de curtidas</option>
+        <option value="3">Data da postagem</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-4">
+      <label for="countPost">Quantidade de postagens</label>
+      <input
+        type="number"
+        class="form-control"
+        id="countPost"
+        name="countPost"
+        [value]="countPost"
+        aria-describedby="countPost"
+        placeholder="Quantas postagens deseja?"        
+        [(ngModel)]="countPost"
+      />
+    </div>
+
+    <br />
+
+    <div style="text-align: end;">
+      <p style="font-size:11px">* Campos obrigatórios</p>
+    </div>
+
+    <div style="text-align: center">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Baixar arquivos</button>
+    </div>
+  </form>
+</div>
