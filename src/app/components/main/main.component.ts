@@ -19,7 +19,6 @@ export class MainComponent implements OnInit {
   email = ''
   keyword = ''
   dataPostagem = 1
-  countPost = 30
   form = ''
   jsonObject: any;
   region = 'BR'
@@ -36,11 +35,7 @@ export class MainComponent implements OnInit {
     if (form.invalid) {
       console.log('Formulário inválido')
       return
-    }
-    // Coloca um número maximo de postagens
-    if (this.countPost > 30) {
-      this.countPost = 30
-    }
+    }   
   }
 
   // Exporta o JSON para um arquivo .xlsx
@@ -86,7 +81,6 @@ export class MainComponent implements OnInit {
       "dataPostagem": this.dataPostagem,
       "region": this.region,
       "sort": this.sort,
-      "countPost": this.countPost
     }
 
       this.loading = true
